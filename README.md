@@ -1,2 +1,2 @@
 # RecipeFlow
-A Minecraft mod for factory planning based on ingame recipe pulling and ingame GUI.
+Minecraft mod to generate flowcharts within the game based on registered recipes. 
