@@ -37,10 +37,20 @@ public class GuiExtended extends Gui{
      */
     public void drawCenteredString(FontRenderer fontRendererIn, String text, int x, int y, float scale, int color)
     {
-    	scale = scale * 1F;
     	GL11.glScalef(scale, scale, scale);
         float mScale = (float)Math.pow(scale, -1);
     	fontRendererIn.drawStringWithShadow(text, (x - fontRendererIn.getStringWidth(text) / 2), y, color);
+    	GL11.glScalef(mScale, mScale, mScale);
+    }
+    
+    /**
+     * Renders the specified text to the screen, left-aligned.
+     */
+    public void drawString(FontRenderer fontRendererIn, String text, int x, int y, float scale, int color)
+    {
+    	GL11.glScalef(scale, scale, scale);
+    	float mScale = (float)Math.pow(scale, -1);
+    	fontRendererIn.drawStringWithShadow(text, x, y, color);
     	GL11.glScalef(mScale, mScale, mScale);
     }
 }

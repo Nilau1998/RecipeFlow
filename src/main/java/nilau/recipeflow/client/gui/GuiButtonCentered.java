@@ -13,29 +13,29 @@ import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.util.ResourceLocation;
 
 @SideOnly(Side.CLIENT)
-public class GuiButtonExtended extends GuiButton{
+public class GuiButtonCentered extends GuiButton{
 	protected static final ResourceLocation buttonTextures = new ResourceLocation("textures/gui/widgets.png");
     /** Button width in pixels */
-    public int width;
+    private int width;
     /** Button height in pixels */
-    public int height;
+    private int height;
     /** The x position of this control. */
-    public int xPosition;
+    private int xPosition;
     /** The y position of this control. */
-    public int yPosition;
+    private int yPosition;
     /** The string displayed on this control. */
-    public String displayString;
-    public int id;
+    private String displayString;
+    private int id;
     /** True if this control is enabled, false to disable. */
-    public boolean enabled;
+    private boolean enabled;
     /** Hides the button completely if false. */
-    public boolean visible;
+    private boolean visible;
     protected boolean field_146123_n;
     private static final String __OBFID = "CL_00000668";
-    public int packedFGColour;
-    public static float scale;
+    private int packedFGColour;
+    private float scale;
     
-    public GuiButtonExtended(int p_i1021_1_, int p_i1021_2_, int p_i1021_3_, int p_i1021_4_, int p_i1021_5_, String p_i1021_6_, float p_scale) {
+    public GuiButtonCentered(int p_i1021_1_, int p_i1021_2_, int p_i1021_3_, int p_i1021_4_, int p_i1021_5_, String p_i1021_6_, float p_scale) {
     	super(p_i1021_1_, p_i1021_2_, p_i1021_3_, p_i1021_4_, p_i1021_5_, p_i1021_6_);
     	this.width = 200;
         this.height = 20;
@@ -51,7 +51,7 @@ public class GuiButtonExtended extends GuiButton{
     }
     
     /**
-     * Draws this button to the screen.
+     * Draws this button to the screen with center alignment for the string.
      */
     public void drawButton(Minecraft p_146112_1_, int p_146112_2_, int p_146112_3_)
     {

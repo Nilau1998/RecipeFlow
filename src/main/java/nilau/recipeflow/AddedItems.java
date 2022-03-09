@@ -6,7 +6,7 @@ import nilau.recipeflow.items.FlowchartTool;
 
 public class AddedItems {
 
-	public static Item flowchartTool;
+	private static Item flowchartTool;
 	
 	public static void initItems() {
 		flowchartTool = new FlowchartTool();

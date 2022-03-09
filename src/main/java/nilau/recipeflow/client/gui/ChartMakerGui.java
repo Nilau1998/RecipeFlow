@@ -4,19 +4,19 @@ import org.lwjgl.opengl.GL11;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiOptionButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.ResourceLocation;
 import nilau.recipeflow.lib.Reference;
 import nilau.recipeflow.client.gui.*;
 
-public class ChartMakerGui extends GuiScreenExtended {
-	int guiWidth = 512;
-	int guiHeight = 256;
+public class ChartMakerGui extends GuiScreen {
+	private int guiWidth = 512;
+	private int guiHeight = 256;
 	
-	GuiButtonExtended addFlow;
-	GuiButtonExtended removeFlow;
-	GuiButtonExtended showFlowchart;
-	// GuiButton editFlowName;
+	private GuiButtonCentered addFlow;
+	private GuiButtonCentered removeFlow;
+	private GuiButtonCentered showFlowchart;
 	
 	@Override
 	public void drawScreen(int x, int y, float ticks) {
@@ -28,9 +28,6 @@ public class ChartMakerGui extends GuiScreenExtended {
 		mc.renderEngine.bindTexture(new ResourceLocation(Reference.MOD_ID, "textures/gui/gui_flowchartTool.png"));
 		guiExtension.drawTexturedModalRectCustomSize(guiX, guiY, 0, 0, guiWidth, guiHeight, 512, 512);
 		fontRendererObj.drawString("Recipe Flow", guiX + 7, guiY + 5, 0x000000);
-		guiExtension.drawStringScalable(fontRendererObj, "Test", guiX + 40, guiY + 40, 0.6F, 0xFFFFFF);
-		guiExtension.drawStringScalable(fontRendererObj, "lmao", guiX + 40, guiY + 70, 1F, 0xFFFFFF);
-		
 		super.drawScreen(x, y, ticks);
 	}
 	
@@ -38,13 +35,23 @@ public class ChartMakerGui extends GuiScreenExtended {
 	public void initGui() {
 		int guiX = (width - guiWidth) / 2;
 		int guiY = (height - guiHeight) / 2;
+		String[] testingStringArray = {"Hey", "wie", "gehtssssssssssssss"};
 		
+		// hard coded buttons
 		buttonList.clear();
-		buttonList.add(addFlow = new GuiButtonExtended(0, guiX + 9, guiY + 16, 10, 9, "+", 0.5F));
-		buttonList.add(removeFlow = new GuiButtonExtended(1, guiX + 21, guiY + 16, 10, 9, "-", 0.5F));
-		buttonList.add(showFlowchart = new GuiButtonExtended(2, guiX + 468, guiY + 9, 50, 20, "Flowchart", 0.7F));
-		// buttonList.add(editFlowName = new GuiButton(3, guiX + 70, guiY + 51, 50, 20, ""));
+		buttonList.add(addFlow = new GuiButtonCentered(0, guiX + 9, guiY + 16, 10, 9, "+", 1F));
+		buttonList.add(removeFlow = new GuiButtonCentered(1, guiX + 21, guiY + 16, 10, 9, "-", 1F));
+		buttonList.add(showFlowchart = new GuiButtonCentered(2, guiX + 468, guiY + 9, 50, 20, "Flowchart", 0.7F));
+		int buttonIndexOffset = buttonList.size();
+		int j = testingStringArray.length;
+		for (int k = 0; k < j; ++k) {
+			this.buttonList.add(new GuiButtonFactoryList(k + buttonIndexOffset, guiX + 9, 29 + guiY + 14 * k, invround(90, 0.7F), 20, testingStringArray[k], 0.7F));
+		}
 		
 		super.initGui();
+	}
+	
+	private int invround(int x, float y) {
+		return Math.round(x * (1 / y));
 	}
 }
