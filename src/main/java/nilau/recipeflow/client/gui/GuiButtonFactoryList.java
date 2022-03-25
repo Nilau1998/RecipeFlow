@@ -19,6 +19,8 @@ public class GuiButtonFactoryList extends GuiButton{
     private int width;
     /** Button height in pixels */
     private int height;
+    /** The indent in front of the button text. */
+    private int textIndent;
     /** The x position of this control. */
     private int xPosition;
     /** The y position of this control. */
@@ -39,6 +41,7 @@ public class GuiButtonFactoryList extends GuiButton{
     	super(p_i1021_1_, p_i1021_2_, p_i1021_3_, p_i1021_4_, p_i1021_5_, p_i1021_6_);
     	this.width = 200;
         this.height = 20;
+        this.textIndent = 4;
         this.enabled = true;
         this.visible = true;
         this.id = p_i1021_1_;
@@ -87,7 +90,7 @@ public class GuiButtonFactoryList extends GuiButton{
                 l = 16777120;
             }
             GuiExtended guiExtended = new GuiExtended();
-			guiExtended.drawString(fontrenderer, this.displayString, Math.round(this.xPosition / scale), Math.round(this.yPosition / scale) + (this.height - 8) / 2, scale, l);
+			guiExtended.drawString(fontrenderer, this.displayString, Math.round(this.xPosition / scale) + this.textIndent, Math.round(this.yPosition / scale) + (this.height - 8) / 2, scale, l);
         }
     }
     
