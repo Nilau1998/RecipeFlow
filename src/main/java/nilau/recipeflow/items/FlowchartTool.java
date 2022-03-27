@@ -6,7 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import nilau.recipeflow.client.gui.ChartMakerGui;
+import nilau.recipeflow.client.gui.GuiChartMaker;
 
 public class FlowchartTool extends Item {
 	public FlowchartTool() {
@@ -19,7 +19,7 @@ public class FlowchartTool extends Item {
 	@Override
 	public ItemStack onItemRightClick(ItemStack item, World world, EntityPlayer player) {
 		if(!world.isRemote) {
-			Minecraft.getMinecraft().displayGuiScreen(new ChartMakerGui());
+			Minecraft.getMinecraft().displayGuiScreen(new GuiChartMaker());
 		}
 		return super.onItemRightClick(item, world, player);
 	}

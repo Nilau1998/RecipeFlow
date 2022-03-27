@@ -34,6 +34,11 @@ public class FactoryIO {
 		factoryFile.close();
 	}
 	
+	public void deleteFactoryFile(String factoryName) throws IOException {
+		final File fileToDelete = new File("RecipeFlowFactories/" + factoryName + ".json");
+		fileToDelete.delete();
+	}
+	
 	public ArrayList<String> getFactoryList() {
 		return factoryList;
 	}
